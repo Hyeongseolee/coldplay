@@ -86,7 +86,7 @@ def main():
     preprocessor = AudioPreprocessor()
 
     # 모든 .wav 파일 찾기
-    wav_files = glob.glob(os.path.join(raw_data_dir, "**", "*.wav"), recursive=True)
+    wav_files = glob.glob(os.path.join(r"C:\Users\hyeong seo lee\Documents\GitHub\coldplay\audio file", "**", "*.wav"), recursive=True)
     
     if not wav_files:
         print(f"'{raw_data_dir}' 경로에서 .wav 파일을 찾을 수 없습니다.")

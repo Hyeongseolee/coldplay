@@ -61,8 +61,6 @@ def main():
         # 파일에서 순차적으로(시간순) 특징 추출
         chunk_features = extract_mfcc_features(f)
         
-        # 🎯 핵심 변경점: 파일 내 절반 자르기 (Time-series Split)
-        # 각 파일의 앞 50%는 Train, 뒤 50%는 Test로 할당
         half_idx = len(chunk_features) // 2
         
         train_chunks = chunk_features[:half_idx]
@@ -85,7 +83,6 @@ def main():
     rf_model = RandomForestClassifier(n_estimators=200, max_depth=10, random_state=42, class_weight='balanced')
     rf_model.fit(X_train, y_train)
     
-    # 모델 저장 (웹 UI용)
     model_path = os.path.join(base_dir, "rf_model.pkl")
     joblib.dump(rf_model, model_path)
     print(f"Model saved to {model_path}")
